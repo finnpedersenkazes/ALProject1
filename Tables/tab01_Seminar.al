@@ -6,10 +6,30 @@ table 50101 "CSD Seminar"
         field(10; "No."; Code[20])
         {
             Caption = 'No.';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                if "No." <> xRec."No." then begin
+                    SeminarSetup.Get();
+                    NoSeriesMgt.TestManual(SeminarSetup."Seminar Nos.");
+                    "No. Series" := '';
+                end;
+            end;
         }
         field(20; "Name"; Text[50])
         {
             Caption = 'Name';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                if ("Search Name" = UpperCase(xRec.Name)) or
+                    ("Search Name" = '') then begin
+                    "Search Name" := Name;
+                end;
+
+            end;
         }
         field(30; "Seminar Duration"; Decimal)
         {
@@ -56,6 +76,17 @@ table 50101 "CSD Seminar"
         {
             Caption = 'Gen. Prod. Posting Group';
             TableRelation = "Gen. Product Posting Group";
+
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                if (xRec."Gen. Prod. Posting Group" <> "Gen. Prod. Posting Group") then begin
+                    if GenProdPostingGroup.ValidateVatProdPostingGroup(GenProdPostingGroup, "Gen. Prod. Posting Group") then begin
+                        Validate("VAT Prod. Posting Group", GenProdPostingGroup."Def. VAT Prod. Posting Group");
+                    end;
+                end;
+            end;
         }
 
         field(120; "VAT Prod. Posting Group"; Code[10])
@@ -109,12 +140,25 @@ table 50101 "CSD Seminar"
         SeminarCommentLine.SetRange("Table Name", SeminarCommentLine."Table Name"::Seminar);
         SeminarCommentLine.SetRange("No.", "No.");
         SeminarCommentLine.DeleteAll();
-
     end;
 
     trigger OnRename()
     begin
         "Last Date Modified" := Today();
+    end;
+
+    procedure AssistEdit(): Boolean
+    begin
+        with Seminar do begin
+            Seminar := Rec;
+            SeminarSetup.Get();
+            SeminarSetup.TestField("Seminar Nos.");
+            if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Nos.", xRec."No. Series", "No. Series") then begin
+                NoSeriesMgt.SetSeries("No.");
+                Rec := Seminar;
+                exit(true);
+            end;
+        end;
     end;
 
 }
