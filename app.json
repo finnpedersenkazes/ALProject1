@@ -1,0 +1,26 @@
+{
+  "id": "db4a5a34-e28e-4cf8-881b-1539f92b588b",
+  "name": "ALProject1",
+  "publisher": "Finn Pedersen",
+  "brief": "My first app",
+  "description": "It is a great app",
+  "version": "1.0.0.0",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "13.0.0.0",
+  "application": "13.0.0.0",
+  "idRange": {
+    "from": 50100,
+    "to": 50149
+  },
+  "target": "Internal",
+  "showMyCode": true,
+  "features": ["TranslationFile"],
+  "runtime": "2.1"
+}
