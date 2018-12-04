@@ -5,6 +5,7 @@ page 50101 "CSD Seminar Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "CSD Seminar";
+    Caption = 'Seminar Card';
 
     layout
     {
@@ -69,7 +70,8 @@ page 50101 "CSD Seminar Card"
             {
                 action("Co&mment")
                 {
-                    // Insert missing code from page 154
+                    RunObject = page "CSD Seminar Comment Sheet";
+                    RunPageLink = "Table Name" = const (Seminar), "No." = field ("No.");
                     Image = Comment;
                     Promoted = true;
                     PromotedIsBig = true;

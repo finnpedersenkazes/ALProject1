@@ -143,6 +143,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CSD Seminar Comment Line - Field Comment - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1944624769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Seminar Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CSD Seminar Card - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 729898515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Seminar List</source>
           <note from="Developer" annotates="general" priority="2"></note>

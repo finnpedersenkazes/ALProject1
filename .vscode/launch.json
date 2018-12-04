@@ -12,7 +12,7 @@
             "startupObjectType": "Page",
             "breakOnError": true,
             "tenant": "default",
-            "schemaUpdateMode": "Recreate"
+            "schemaUpdateMode": "Synchronize"
         }
     ]
 }
